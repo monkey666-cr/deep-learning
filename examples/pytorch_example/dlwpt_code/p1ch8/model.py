@@ -16,6 +16,8 @@ from torchvision.transforms import transforms
 
 data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 
+# torch.set_num_threads(6)
+
 
 class NetDepth(nn.Module):
     def __init__(self, n_chan1):
@@ -135,7 +137,7 @@ def run_with_scene_0():
 
     print("*" * 50)
 
-    _execute_model_multiprocess(m, d, 2)
+    _execute_model_multiprocess(m, d, 4)
 
     print("*" * 50)
 
@@ -151,8 +153,8 @@ def run_with_scene_1():
 
     print(f"main process model id: {id(m)}")
 
-    # _execute_model_multiprocess(m, None, 1)
-    _execute_model_threading(m, None, 1)
+    _execute_model_multiprocess(m, None, 1)
+    # _execute_model_threading(m, None, 1)
 
     print(">" * 50)
 
@@ -162,8 +164,8 @@ def run_with_scene_1():
 
     print("*" * 50)
 
-    # _execute_model_multiprocess(m, None, 2)
-    _execute_model_threading(m, None, 2)
+    _execute_model_multiprocess(m, None, 2)
+    # _execute_model_threading(m, None, 2)
 
     print("*" * 50)
 
@@ -208,7 +210,7 @@ def run_with_scene_3():
 
     print("*" * 50)
 
-    _execute_model_multiprocess(None, None, 2)
+    _execute_model_multiprocess(None, None, 3)
 
     print("*" * 50)
 
